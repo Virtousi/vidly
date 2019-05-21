@@ -25,8 +25,6 @@ namespace Vidly.Controllers
 
         private IEnumerable<Customers> GetCustomers()
         {
-            var number = 1;
-            number = number + 1;
             return new List<Customers>
             {
                 new Customers {ID = 1, Name = "John Smith" },
