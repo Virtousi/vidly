@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Vidly.Models.Movies>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+
+@if (Model !=null)
+    {
+        <table class="table table-bordered table-hover">
+            @*Parent*@
+            <thead>
+                <tr>
+                    <th>Movie</th>
+                </tr>
+            </thead>
+            @*EndOfParent*@
+            @*Blocks*@
+            <tbody>
+                    @foreach (var movie in Model)
+                    {
+                        @*Rows*@
+                        <tr>
+                            @*Single Cell*@
+                            <td>@movie.Name</td>
+                        </tr>
+                    }
+            </tbody>
+            @*EndOfOneBlock*@
+        </table>
+    }
