@@ -13,6 +13,8 @@
         <thead>
             <tr>
                 <th>Customers</th>
+                <th>Membership Name</th>
+                <th>Discount Rate</th>
             </tr>
         </thead>
         @*EndOfParent*@
@@ -24,6 +26,8 @@
                 <tr>
                     @*Single Cell*@
                     <td>@Html.ActionLink(customers.Name,"Details","Customers",new { id = customers.ID },null)</td>
+                    <td>@customers.MembershipType.MembershipName</td>
+                    <td>@customers.MembershipType.DiscountRate %</td>
                 </tr>
             }
         </tbody>
