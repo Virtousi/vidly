@@ -33,7 +33,8 @@ namespace Vidly.Controllers
 
         public ViewResult Details(int ID)
         {
-            var customer = _context.Customers.SingleOrDefault(c => c.ID == ID);
+            //exerise 2 work
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.ID == ID);
             return View(customer);
         }
 
