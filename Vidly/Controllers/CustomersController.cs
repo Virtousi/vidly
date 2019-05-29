@@ -5,10 +5,12 @@ using System.Web;
 using System.Data.Entity;
 using System.Web.Mvc;
 using Vidly.Models;
+using Vidly.ViewModels;
 
 
 namespace Vidly.Controllers
 {
+    //Instiate the dbContext
     public class CustomersController : Controller
     {
         private ApplicationDbContext _context;
@@ -22,6 +24,25 @@ namespace Vidly.Controllers
         {
             _context.Dispose();
         }
+
+        // GET: New
+        public ActionResult New()
+        {
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModels
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View(viewModel);
+        }
+
+        //GET: Create
+        [HttpPost] // To update to results
+        public ActionResult Create(NewCustomerViewModels viewModel)
+        {
+            return View();
+        }
+
         // GET: Customers
         public ViewResult Index()
         {
@@ -31,6 +52,7 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
+        // GET: Details
         public ViewResult Details(int ID)
         {
             //exerise 2 work

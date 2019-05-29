@@ -1,0 +1,35 @@
+﻿@model Vidly.ViewModels.NewCustomerViewModels
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+
+@*use the using block to open <form> and close form <\form>*@
+@using (Html.BeginForm("Create", "Customers"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m=>m.Customer.Name)
+        @*need to understand more on the html attributes, look at the second part *@  
+        @Html.TextBoxFor(m=>m.Customer.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.BirthDate)
+        @*need to understand more on the html attributes, look at the second part *@
+        @Html.TextBoxFor(m => m.Customer.BirthDate, new { @class = "form-control" })
+    </div>
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m=>m.Customer.IsSubsribedToNewsletter) Subsribed To Newsletter?
+        </label>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Customer.MembershipTypeID)
+        @*need to understand more on the html attributes, look at the second part *@
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeID, new SelectList(Model.MembershipTypes,"ID", "MembershipName"),"Select Membership Type", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    //look at the bootsscrap online to see the what are form-control, form-group and so on
+}
+
